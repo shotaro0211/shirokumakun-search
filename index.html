@@ -55,8 +55,8 @@
       Shirokumakun Search
     </div>
     <div style="text-align: center; margin-bottom: 20px;margin-top: 100px;">
-      Token Id:
-      <input style="width: 900px" id="value" type="number">
+      URL:
+      <input style="width: 1200px; font-size: 14px;" id="value">
     </div>
     <div id="search" style="text-align: center; margin-bottom: 20px;">
       <button class="c-button" onclick="buttonSearch()">Search</button>
@@ -75,8 +75,9 @@
     );
 
     const buttonSearch = async() => {
-      var id = document.getElementById('value').value;
-      contract.methods.getNickname(id).call().then(function(result){
+      var url = document.getElementById('value').value;
+      url = url.slice(url.lastIndexOf('/') + 1);
+      contract.methods.getNickname(url).call().then(function(result){
         window.location.href = "https://twitter.com/" + result;
       });
     };
